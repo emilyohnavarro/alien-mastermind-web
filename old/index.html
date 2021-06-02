@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Alien Mastermind</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&family=Ubuntu&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/fd87467771.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row goal-row">
+      <img class="goal" src="images/g.gif">
+      <img class="goal" src="images/o.gif">
+      <img class="goal" src="images/a.gif">
+      <img class="goal" src="images/l.gif">
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="col-container">
+      <div class="col-md-3">
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+        <div class="row rocket-row">
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+          <div class="rocket">
+            <img class="img2" src="images/emptyRocket.gif">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+        <div class="row peg-row">
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+          <div class="peg">
+            <img class="img1" src="images/emptyPeg.gif">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="row buttons-row">
+          <button type="button" class="btn btn-primary btn-red">Red</button>
+        </div>
+        <div class="row buttons-row">
+          <button type="button" class="btn btn-primary btn-yellow">Yellow</button>
+        </div>
+        <div class="row buttons-row">
+          <button type="button" class="btn btn-primary btn-green">Green</button>
+        </div>
+        <div class="row buttons-row">
+          <button type="button" class="btn btn-primary btn-purple">Purple</button>
+        </div>
+
+        <div class="row"></div>
+        <!-- <div class="row"></div> -->
+
+        <div class="row buttons-row">
+          <button type="button" class="btn btn-outline-primary btn-ok">Ok</button>
+          <button type="button" class="btn btn-outline-primary btn-clear">Clear</button>
+        </div>
+
+        <div class="row"></div>
+        <!-- <div class="row"></div> -->
+
+        <div class="row buttons-row">
+          <button type="button" class="btn btn-outline-primary btn-instructions">Instructions</button>
+          <button type="button" class="btn btn-outline-primary btn-change-level">Change Level</button>
+        </div>
+
+        <div class="row level-label">
+          <p>Level: 1</p>
+        </div>
+
+        <div class="row buttons-row">
+          <button type="button" class="btn btn-outline-primary btn-new-game">New Game</button>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="game.js" charset="utf-8"></script>
+</body>
+
+</html>
