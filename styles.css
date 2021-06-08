@@ -134,7 +134,12 @@ body {
   height: 60px;
 }
 
-.rocket-row {
+/* .rocket-row {
+  height: 61px;
+  width: 50%;
+} */
+
+.rocket-grid {
   height: 61px;
   width: 50%;
 }
