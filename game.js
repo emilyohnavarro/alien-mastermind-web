@@ -199,7 +199,7 @@ function Goal(level) {
 const WIN = 1, LOSE = 2, IN_PROGRESS = 3;
 
 function GameEngine(level) {
-  console.log("level in GameEngine constructor: " + level);
+  // console.log("level in GameEngine constructor: " + level);
   this.target = new Goal(level);
   this.currentPegSeq = []; // Pegs
   this.currentRocketSeq = []; // Rockets
@@ -295,7 +295,6 @@ GameEngine.prototype.getLevel = function () {
 
 // GameBoard: =========================================================
 function GameBoard(level) {
-  console.log("level in GameBoard constructor: " + level);
   this.engine = new GameEngine(level);
   this.rocketSpaces = []; // 2d array of rocket spaces
   this.spaces = []; // 2d array of spaces
@@ -304,6 +303,8 @@ function GameBoard(level) {
 
 // Main: =========================================================
 const DEFAULT_LEVEL = 1;
+const RED_X_IMG ="images/x.png";
+
 newGame(DEFAULT_LEVEL);
 
 // g = board.engine.target;
@@ -338,8 +339,18 @@ $('.dropdown-menu a').click(function () {
 function ok() {
   if (board.engine.getCurrentSeqSize() == 4) {
     board.engine.submitPSeq();
+    allBlank = true;
     for (i = 0; i < 4; i++) {
       $("#rocket" + (board.engine.currentRow + 1) + "-" + i).attr("src", board.engine.getCurrentRocketSeq(i).imageSrc);
+      if (board.engine.getCurrentRocketSeq(i).imageSrc != EMPTY_ROCKET_IMG) {
+        allBlank = false;
+      }
+
+      // if no rockets, blank, show red x:
+      if (allBlank) {
+        $("#x-" + (board.engine.currentRow + 1)).attr("src", RED_X_IMG);
+        $("#x-" + (board.engine.currentRow + 1)).show();
+      }
     }
   }
   else {
@@ -425,7 +436,6 @@ function enableButtons() {
 }
 
 function newGame(level) {
-  console.log("level in newGame: " + level);
   board = new GameBoard(level);
 
   // clear all peg images:
@@ -433,6 +443,9 @@ function newGame(level) {
 
   // clear all rocket images:
   $(".rocket-img").attr("src", EMPTY_ROCKET_IMG);
+
+  // hide red x images:
+  $(".x").hide();
 
   // cover goal:
   $("#goal-0").attr("src", G_IMG);
