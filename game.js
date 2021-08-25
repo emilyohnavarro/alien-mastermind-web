@@ -313,8 +313,8 @@ newGame(DEFAULT_LEVEL);
 // console.log(g.sequence[2].color);
 // console.log(g.sequence[3].color);
 
-$("#btn-ok").click(function () {
-  ok();
+$("#btn-submit").click(function () {
+  submit();
 });
 
 $("#btn-clear").click(function () {
@@ -336,7 +336,7 @@ $('.dropdown-menu a').click(function () {
   changeLevel(parseInt($(this).text()));         
 });
 
-function ok() {
+function submit() {
   if (board.engine.getCurrentSeqSize() == 4) {
     board.engine.submitPSeq();
     allBlank = true;
@@ -352,6 +352,7 @@ function ok() {
         $("#x-" + (board.engine.currentRow + 1)).show();
       }
     }
+    disableSubmitButton();
   }
   else {
     alert("Each guess must contain 4 aliens");
@@ -371,6 +372,7 @@ function clear() {
       $("#peg" + board.engine.currentRow + "-" + i).attr("src", EMPTY_PEG_IMG);
     }
   }
+  disableSubmitButton();
 }
 
 function instructions() {
@@ -416,12 +418,12 @@ function disableButtons() {
   $("#btn-orange").prop("disabled", true);
   $("#btn-pink").prop("disabled", true);
   $("#btn-aqua").prop("disabled", true);
-  $("#btn-ok").prop("disabled", true);
+  disableSubmitButton();
   $("#btn-clear").prop("disabled", true);
   $("#btn-change-level").prop("disabled", true);
 }
 
-function enableButtons() {
+function resetButtons() {
   $("#btn-red").prop("disabled", false);
   $("#btn-yellow").prop("disabled", false);
   $("#btn-green").prop("disabled", false);
@@ -430,7 +432,7 @@ function enableButtons() {
   $("#btn-orange").prop("disabled", false);
   $("#btn-pink").prop("disabled", false);
   $("#btn-aqua").prop("disabled", false);
-  $("#btn-ok").prop("disabled", false);
+  disableSubmitButton();
   $("#btn-clear").prop("disabled", false);
   $("#btn-change-level").prop("disabled", false);
 }
@@ -486,8 +488,8 @@ function newGame(level) {
     }
   }
 
-  // enable buttons:
-  enableButtons();
+  // reset buttons:
+  resetButtons();
 
   // add handlers to color buttons:
   $(".btn-color").on("click", function () {
@@ -512,6 +514,13 @@ function newGame(level) {
         board.engine.addPegToSeq(AQUA_PEG);
       }
       $("#peg" + board.engine.currentRow + "-" + (board.engine.currentCol - 1)).attr("src", board.engine.getLastPeg().imageSrc);
+
+      // enable submit button only if current guess contains 4 aliens:
+      if (board.engine.getCurrentSeqSize() == 4) {
+        enableSubmitButton();
+      } else {
+        disableSubmitButton();
+      }
     }
   });
 
@@ -526,7 +535,17 @@ function changeLevel(level) {
   }
 }
 
+function disableSubmitButton() {
+  $("#btn-submit").prop("disabled", true);
+  $("#btn-submit").attr("title", "Each guess must contain 4 aliens");
+}
+
+function enableSubmitButton() {
+  $("#btn-submit").prop("disabled", false);
+  $("#btn-submit").attr("title", "Submit your current guess");
+}
+
 function generateColorButtonHtml(color) {
   return "<div class=\"row\"><button type=\"button\" class=\"btn btn-primary btn-color\" id=\"btn-" + color.toLowerCase()
-    + "\">" + color.substring(0, 1).toUpperCase() + color.substring(1) + "</button></div>";
+    + "\" title=\"Add " + color.toLowerCase() + " alien to your guess\">" + color.substring(0, 1).toUpperCase() + color.substring(1) + "</button></div>";
 }
