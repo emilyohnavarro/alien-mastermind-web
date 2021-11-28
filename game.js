@@ -303,7 +303,7 @@ function GameBoard(level) {
 
 // Main: =========================================================
 const DEFAULT_LEVEL = 1;
-const RED_X_IMG ="images/x.png";
+const RED_X_IMG = "images/x.png";
 
 newGame(DEFAULT_LEVEL);
 
@@ -331,9 +331,9 @@ $("#btn-new-game").click(function () {
   }
 });
 
-$('.dropdown-menu a').click(function () {  
+$('.dropdown-menu a').click(function () {
   console.log("level in drop down: " + $(this).text());
-  changeLevel(parseInt($(this).text()));         
+  changeLevel(parseInt($(this).text()));
 });
 
 function submit() {
@@ -345,12 +345,12 @@ function submit() {
       if (board.engine.getCurrentRocketSeq(i).imageSrc != EMPTY_ROCKET_IMG) {
         allBlank = false;
       }
+    }
 
-      // if no rockets, blank, show red x:
-      if (allBlank) {
-        $("#x-" + (board.engine.currentRow + 1)).attr("src", RED_X_IMG);
-        $("#x-" + (board.engine.currentRow + 1)).show();
-      }
+    // if no rockets, blank, show red x:
+    if (allBlank) {
+      $("#x-" + (board.engine.currentRow + 1)).attr("src", RED_X_IMG);
+      $("#x-" + (board.engine.currentRow + 1)).show();
     }
     disableSubmitButton();
   }
