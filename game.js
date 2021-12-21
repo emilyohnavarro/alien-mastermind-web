@@ -1,10 +1,12 @@
-// Peg: =========================================================
+// =========================================================
+// Peg (represents one peg (alien) in Alien Mastermind):
 const RED_PEG = 1, YELLOW_PEG = 2, GREEN_PEG = 3, PURPLE_PEG = 4, BLUE_PEG = 5, ORANGE_PEG = 6,
   PINK_PEG = 7, AQUA_PEG = 8, EMPTY_PEG = 9;
 
 const RED_PEG_IMG = "images/redAlien.gif", YELLOW_PEG_IMG = "images/yellowAlien.gif", GREEN_PEG_IMG = "images/greenAlien.gif",
   PURPLE_PEG_IMG = "images/purpleAlien.gif", BLUE_PEG_IMG = "images/blueAlien.gif", ORANGE_PEG_IMG = "images/orangeAlien.gif",
   PINK_PEG_IMG = "images/pinkAlien.gif", AQUA_PEG_IMG = "images/aquaAlien.gif", EMPTY_PEG_IMG = "images/emptyPeg.gif";
+
 
 function Peg(color) {
   this.color = color;
@@ -43,10 +45,13 @@ function Peg(color) {
 }
 
 
-// Rocket: =========================================================
+
+// =========================================================
+// Rocket (represents a rocket (indicator for a guess) in Alien Mastermind): 
 const BLUE_ROCKET = 1, WHITE_ROCKET = 2, EMPTY_ROCKET = 3;
 const BLUE_ROCKET_IMG = "images/blueRocket.gif", WHITE_ROCKET_IMG = "images/whiteRocket.gif",
   EMPTY_ROCKET_IMG = "images/emptyRocket.gif";
+
 
 function Rocket(fill) {
   this.fill = fill;
@@ -66,23 +71,27 @@ function Rocket(fill) {
 }
 
 
-// Goal: =========================================================
+
+// =========================================================
+// Goal (Represents the goal/target sequence that the player is trying to guess in Alien Mastermind): 
 const NUM_PEGS = 4, COUNTED_BLUE = 1, COUNTED_WHITE = 2, NOT_COUNTED = 3;
 const G_IMG = "images/g.gif", O_IMG = "images/o.gif", A_IMG = "images/a.gif", L_IMG = "images/l.gif";
+
+
+// Creates a new Goal, based on the given level
 function Goal(level) {
-  console.log("level in Goal constructor: " + level);
   this.level = level;
   this.sequence = []; // element type: Peg
   this.beenCounted = []; // element type: int
 
-  for (i in this.beenCounted) {
+  for (let i in this.beenCounted) {
     this.beenCounted[i] = NOT_COUNTED;
   }
 
   switch (level) {
-    case 1:
-      for (i = 0; i < NUM_PEGS; i++) {
-        randDouble = Math.random();
+    case 1: // level 1, choose randomly from 4 colors
+      for (let i = 0; i < NUM_PEGS; i++) {
+        let randDouble = Math.random();
         if (randDouble < 0.25) {
           this.sequence[i] = new Peg(RED_PEG);
         } else if ((randDouble >= 0.25) && (randDouble < 0.5)) {
@@ -93,11 +102,10 @@ function Goal(level) {
           this.sequence[i] = new Peg(PURPLE_PEG);
         }
       }
-      console.log("in case 1");
       break;
-    case 2:
-      for (i = 0; i < NUM_PEGS; i++) {
-        randDouble = Math.random();
+    case 2: // level 2, choose randomly from 5 colors
+      for (let i = 0; i < NUM_PEGS; i++) {
+        let randDouble = Math.random();
         if (randDouble < 0.2) {
           this.sequence[i] = new Peg(RED_PEG);
         } else if ((randDouble >= 0.2) && (randDouble < 0.4)) {
@@ -110,11 +118,10 @@ function Goal(level) {
           this.sequence[i] = new Peg(BLUE_PEG);
         }
       }
-      console.log("in case 2");
       break;
-    case 3:
-      for (i = 0; i < NUM_PEGS; i++) {
-        randDouble = Math.random();
+    case 3: // level 3, choose randomly from 6 colors
+      for (let i = 0; i < NUM_PEGS; i++) {
+        let randDouble = Math.random();
         if (randDouble < 0.167) {
           this.sequence[i] = new Peg(RED_PEG);
         } else if ((randDouble >= 0.167) && (randDouble < 0.333)) {
@@ -129,11 +136,10 @@ function Goal(level) {
           this.sequence[i] = new Peg(ORANGE_PEG);
         }
       }
-      console.log("in case 3");
       break;
-    case 4:
-      for (i = 0; i < NUM_PEGS; i++) {
-        randDouble = Math.random();
+    case 4: // level 4, choose randomly from 7 colors
+      for (let i = 0; i < NUM_PEGS; i++) {
+        let randDouble = Math.random();
         if (randDouble < 0.143) {
           this.sequence[i] = new Peg(RED_PEG);
         } else if ((randDouble >= 0.143) && (randDouble < 0.286)) {
@@ -150,11 +156,10 @@ function Goal(level) {
           this.sequence[i] = new Peg(PINK_PEG);
         }
       }
-      console.log("in case 4");
       break;
-    case 5:
-      for (i = 0; i < NUM_PEGS; i++) {
-        randDouble = Math.random();
+    case 5: // case 5: // level 5, choose randomly from 8 colors
+      for (let i = 0; i < NUM_PEGS; i++) {
+        let randDouble = Math.random();
         if (randDouble < 0.125) {
           this.sequence[i] = new Peg(RED_PEG);
         } else if ((randDouble >= 0.125) && (randDouble < 0.25)) {
@@ -173,31 +178,40 @@ function Goal(level) {
           this.sequence[i] = new Peg(AQUA_PEG);
         }
       }
-      console.log("in case 5");
       break;
     default:
       console.log("invalid level");
   }
 
+
+  // Counts the peg at the given index as counted as the given rocket color
   Goal.prototype.setPegCount = function (index, color) {
     this.beenCounted[index] = color;
   }
 
+
+  // Clears all counts for the goal pegs
   Goal.prototype.clearAllCounts = function () {
     for (i = 0; i < 4; i++) {
       this.beenCounted[i] = NOT_COUNTED;
     }
   }
 
+
+  // Returns the rocket count for the peg at the given index in the goal
   Goal.prototype.getPegCount = function (index) {
     return this.beenCounted[index];
   }
 }
 
 
-// GameEngine: =========================================================
+
+// =========================================================
+// GameEngine (engine for Alien Mastermind):
 const WIN = 1, LOSE = 2, IN_PROGRESS = 3;
 
+
+// Constructs a new GameEngine with the given ID and level
 function GameEngine(level) {
   // console.log("level in GameEngine constructor: " + level);
   this.target = new Goal(level);
@@ -208,6 +222,8 @@ function GameEngine(level) {
   this.winOrLose = IN_PROGRESS;
 }
 
+
+// Adds a peg to the current guess sequence
 GameEngine.prototype.addPegToSeq = function (color) {
   if (this.currentPegSeq.length < 4) {
     this.currentPegSeq.push(new Peg(color));
@@ -215,19 +231,21 @@ GameEngine.prototype.addPegToSeq = function (color) {
   }
 }
 
-GameEngine.prototype.submitPSeq = function () {
-  numBlueRockets = 0;
-  numWhiteRockets = 0;
 
-  for (i = 0; i < 4; i++) { // go through each peg in sequence
+// Submits the current guess sequence, setting the rockets accordingly
+GameEngine.prototype.submitPSeq = function () {
+  let numBlueRockets = 0;
+  let numWhiteRockets = 0;
+
+  for (let i = 0; i < NUM_PEGS; i++) { // go through each peg in sequence
     if (this.currentPegSeq[i].color == this.target.sequence[i].color) {
       numBlueRockets++;
       this.target.setPegCount(i, COUNTED_BLUE);
     }
   }
 
-  for (i = 0; i < 4; i++) { // go through each peg again to test for white rockets
-    goThruTarget: for (j = 0; j < 4; j++) { // go through each peg in target until there is a match or target
+  for (let i = 0; i < NUM_PEGS; i++) { // go through each peg again to test for white rockets
+    goThruTarget: for (let j = 0; j < NUM_PEGS; j++) { // go through each peg in target until there is a match or target
       // sequence has been exhaustively searched
       if ((this.currentPegSeq[i].color == this.target.sequence[j].color)
         && (this.target.getPegCount(i) != COUNTED_BLUE) && (this.target.getPegCount(j) == NOT_COUNTED)) {
@@ -237,63 +255,80 @@ GameEngine.prototype.submitPSeq = function () {
       }
     }
   }
-  if (numBlueRockets == 4) {
+  if (numBlueRockets == NUM_PEGS) { // guess contains all right colors, right spots
     this.winOrLose = WIN;
   }
-  if ((numBlueRockets != 4) && this.currentRow == 0) {
+  if ((numBlueRockets != NUM_PEGS) && this.currentRow == 0) { // guess wrong, out of guesses
     this.winOrLose = LOSE;
   }
-  for (i = 0; i < 4; i++) {
+  // add the rockets to the rocket sequence:
+  for (let i = 0; i < NUM_PEGS; i++) {
     if (numBlueRockets > 0) {
-      r = new Rocket(BLUE_ROCKET);
+      let r = new Rocket(BLUE_ROCKET);
       this.currentRocketSeq[i] = r;
       numBlueRockets--;
     }
     else {
       if (numWhiteRockets > 0) {
-        r = new Rocket(WHITE_ROCKET);
+        let r = new Rocket(WHITE_ROCKET);
         this.currentRocketSeq[i] = r;
         numWhiteRockets--;
       }
       else {
-        r = new Rocket(EMPTY_ROCKET);
+        let r = new Rocket(EMPTY_ROCKET);
         this.currentRocketSeq[i] = r;
       }
     }
   }
+
+  // reset everything for the next guess:
   this.currentPegSeq = [];
   this.currentRow--;
   this.currentCol = 0;
   this.target.clearAllCounts();
 }
 
+
+// Returns which peg was last guessed in the current sequence
 GameEngine.prototype.getLastPeg = function () {
   return this.currentPegSeq[this.currentPegSeq.length - 1];
 }
 
+
+// Returns how many pegs are in the current guess sequence
 GameEngine.prototype.getCurrentSeqSize = function () {
   return this.currentPegSeq.length;
 }
 
+
+// Returns the sequence of rockets for the current guess
 GameEngine.prototype.getCurrentRocketSeq = function (index) {
   return this.currentRocketSeq[index];
 }
 
+
+// Clears the current guess sequence
 GameEngine.prototype.clearCurrentPegSeq = function () {
   this.currentPegSeq = [];
   this.currentCol = 0;
 }
 
+
+// Returns WIN, LOSE, or INPROGRESS
 GameEngine.prototype.getPlayerStatus = function () {
   return this.winOrLose;
 }
 
+
+// Returns the current level being played
 GameEngine.prototype.getLevel = function () {
   return this.target.level;
 }
 
 
+
 // GameBoard: =========================================================
+// Creates a new Game board based on the given level
 function GameBoard(level) {
   this.engine = new GameEngine(level);
   this.rocketSpaces = []; // 2d array of rocket spaces
@@ -301,29 +336,27 @@ function GameBoard(level) {
 }
 
 
+
 // Main: =========================================================
 const DEFAULT_LEVEL = 1;
 const RED_X_IMG = "images/x.png";
-
 newGame(DEFAULT_LEVEL);
 
-// g = board.engine.target;
-// console.log(g.sequence[0].color);
-// console.log(g.sequence[1].color);
-// console.log(g.sequence[2].color);
-// console.log(g.sequence[3].color);
 
 $("#btn-submit").click(function () {
   submit();
 });
 
+
 $("#btn-clear").click(function () {
   clear();
 });
 
+
 $("#btn-instructions").click(function () {
   instructions();
 });
+
 
 $("#btn-new-game").click(function () {
   if (confirm("Are you sure you want to start a new game?")) {
@@ -331,16 +364,21 @@ $("#btn-new-game").click(function () {
   }
 });
 
+
 $('.dropdown-menu a').click(function () {
   console.log("level in drop down: " + $(this).text());
   changeLevel(parseInt($(this).text()));
 });
 
+
+// submit function (what happens when the submit button is clicked):
 function submit() {
-  if (board.engine.getCurrentSeqSize() == 4) {
+  if (board.engine.getCurrentSeqSize() == NUM_PEGS) {
     board.engine.submitPSeq();
-    allBlank = true;
-    for (i = 0; i < 4; i++) {
+    let allBlank = true;
+
+    // show the rockets:
+    for (let i = 0; i < NUM_PEGS; i++) {
       $("#rocket" + (board.engine.currentRow + 1) + "-" + i).attr("src", board.engine.getCurrentRocketSeq(i).imageSrc);
       if (board.engine.getCurrentRocketSeq(i).imageSrc != EMPTY_ROCKET_IMG) {
         allBlank = false;
@@ -355,8 +393,10 @@ function submit() {
     disableSubmitButton();
   }
   else {
-    alert("Each guess must contain 4 aliens");
+    alert("Each guess must contain " + NUM_PEGS + " aliens");
   }
+
+  // check for win/loss:
   if (board.engine.getPlayerStatus() == WIN) {
     win();
   }
@@ -365,16 +405,20 @@ function submit() {
   }
 }
 
+
+// clear function (what happens when the clear button is clicked):
 function clear() {
   if (board.engine.getCurrentSeqSize() != 0) {
     board.engine.clearCurrentPegSeq();
-    for (i = 0; i < 4; i++) {
+    for (let i = 0; i < NUM_PEGS; i++) {
       $("#peg" + board.engine.currentRow + "-" + i).attr("src", EMPTY_PEG_IMG);
     }
   }
   disableSubmitButton();
 }
 
+
+// instructions function (what happens when the instructions button is clicked):
 function instructions() {
   alert("Four aliens have arranged themselves in a secret order and are hiding behind the sign marked GOAL."
     + '\n' + "There are " + (board.engine.getLevel() + 3) + " different possible colors of aliens."
@@ -391,11 +435,13 @@ function instructions() {
     + '\n' + '\n' + "You are currently playing level " + board.engine.getLevel());
 }
 
+
 function win() {
   showGoal();
   alert("Congratulations -- You win!");
   disableButtons();
 }
+
 
 function lose() {
   showGoal();
@@ -403,11 +449,13 @@ function lose() {
   disableButtons();
 }
 
+
 function showGoal() {
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < NUM_PEGS; i++) {
     $("#goal-" + i).attr("src", board.engine.target.sequence[i].imageSrc);
   }
 }
+
 
 function disableButtons() {
   $("#btn-red").prop("disabled", true);
@@ -423,6 +471,8 @@ function disableButtons() {
   $("#btn-change-level").prop("disabled", true);
 }
 
+
+// puts all the buttons in the game-starting state:
 function resetButtons() {
   $("#btn-red").prop("disabled", false);
   $("#btn-yellow").prop("disabled", false);
@@ -437,6 +487,8 @@ function resetButtons() {
   $("#btn-change-level").prop("disabled", false);
 }
 
+
+// resets everything to a new game state:
 function newGame(level) {
   board = new GameBoard(level);
 
@@ -494,8 +546,7 @@ function newGame(level) {
   // add handlers to color buttons:
   $(".btn-color").on("click", function () {
     var source = $(this).attr("id");
-    console.log("source = " + source);
-    if (board.engine.getCurrentSeqSize() < 4) {
+    if (board.engine.getCurrentSeqSize() < NUM_PEGS) {
       if (source == "btn-red") {
         board.engine.addPegToSeq(RED_PEG);
       } else if (source == "btn-yellow") {
@@ -515,8 +566,8 @@ function newGame(level) {
       }
       $("#peg" + board.engine.currentRow + "-" + (board.engine.currentCol - 1)).attr("src", board.engine.getLastPeg().imageSrc);
 
-      // enable submit button only if current guess contains 4 aliens:
-      if (board.engine.getCurrentSeqSize() == 4) {
+      // enable submit button only if current guess contains NUM_PEGS aliens:
+      if (board.engine.getCurrentSeqSize() == NUM_PEGS) {
         enableSubmitButton();
       } else {
         disableSubmitButton();
@@ -528,22 +579,25 @@ function newGame(level) {
   $("#level-dropdown").text("Level: " + board.engine.getLevel());
 }
 
+
 function changeLevel(level) {
   if (confirm("Are you sure you want to start a new game?")) {
-    console.log("level in changeLevel: " + level);
     newGame(level);
   }
 }
+
 
 function disableSubmitButton() {
   $("#btn-submit").prop("disabled", true);
   $("#btn-submit").attr("title", "Each guess must contain 4 aliens");
 }
 
+
 function enableSubmitButton() {
   $("#btn-submit").prop("disabled", false);
   $("#btn-submit").attr("title", "Submit your current guess");
 }
+
 
 function generateColorButtonHtml(color) {
   return "<div class=\"row\"><button type=\"button\" class=\"btn btn-primary btn-color\" id=\"btn-" + color.toLowerCase()
