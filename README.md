@@ -1,4 +1,4 @@
-Project Title: Alien Mastermind
+Project Title: Alien Mastermind Web
 
 Introduction: This is a game I built as a Web application just for fun/learning. It is basically the board game mastermind, with an alien theme.
 
